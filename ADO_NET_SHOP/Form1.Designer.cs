@@ -38,7 +38,6 @@
             this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключитьсяКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отключитьсяОтБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ts_status = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,10 +53,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(786, 394);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -80,15 +83,19 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(792, 400);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Категория";
+            this.tabPage1.Text = "Товары";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(786, 394);
             this.dataGridView2.TabIndex = 0;
             // 
@@ -100,7 +107,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(792, 400);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Товары";
+            this.tabPage2.Text = "Категория";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
@@ -109,8 +116,7 @@
             this.добавитьToolStripMenuItem,
             this.редактироватьToolStripMenuItem,
             this.удалитьToolStripMenuItem,
-            this.подключитьсяКБДToolStripMenuItem,
-            this.отключитьсяОтБДToolStripMenuItem});
+            this.подключитьсяКБДToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -129,12 +135,14 @@
             this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
             this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.редактироватьToolStripMenuItem.Text = "Редактировать";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
             // подключитьсяКБДToolStripMenuItem
             // 
@@ -142,12 +150,6 @@
             this.подключитьсяКБДToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
             this.подключитьсяКБДToolStripMenuItem.Text = "Подключиться к БД";
             this.подключитьсяКБДToolStripMenuItem.Click += new System.EventHandler(this.подключитьсяКБДToolStripMenuItem_Click);
-            // 
-            // отключитьсяОтБДToolStripMenuItem
-            // 
-            this.отключитьсяОтБДToolStripMenuItem.Name = "отключитьсяОтБДToolStripMenuItem";
-            this.отключитьсяОтБДToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
-            this.отключитьсяОтБДToolStripMenuItem.Text = "Отключиться от БД";
             // 
             // panel1
             // 
@@ -184,6 +186,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -211,7 +214,6 @@
         private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem подключитьсяКБДToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отключитьсяОтБДToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel ts_status;
