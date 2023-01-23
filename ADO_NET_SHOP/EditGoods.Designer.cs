@@ -28,54 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_count = new System.Windows.Forms.TextBox();
+            this.tb_price = new System.Windows.Forms.TextBox();
+            this.tb_cat_id = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.tb_id = new System.Windows.Forms.TextBox();
             this.label5_count = new System.Windows.Forms.Label();
             this.label4_price = new System.Windows.Forms.Label();
             this.label3_Cid = new System.Windows.Forms.Label();
             this.label2_name = new System.Windows.Forms.Label();
-            this.tb_id = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label_id = new System.Windows.Forms.Label();
+            this.btn_OK = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox5
+            // tb_count
             // 
-            this.textBox5.Location = new System.Drawing.Point(133, 162);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(177, 20);
-            this.textBox5.TabIndex = 23;
+            this.tb_count.Location = new System.Drawing.Point(133, 162);
+            this.tb_count.Name = "tb_count";
+            this.tb_count.Size = new System.Drawing.Size(177, 20);
+            this.tb_count.TabIndex = 23;
             // 
-            // textBox4
+            // tb_price
             // 
-            this.textBox4.Location = new System.Drawing.Point(133, 128);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(177, 20);
-            this.textBox4.TabIndex = 22;
+            this.tb_price.Location = new System.Drawing.Point(133, 128);
+            this.tb_price.Name = "tb_price";
+            this.tb_price.Size = new System.Drawing.Size(177, 20);
+            this.tb_price.TabIndex = 22;
             // 
-            // textBox3
+            // tb_cat_id
             // 
-            this.textBox3.Location = new System.Drawing.Point(133, 93);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(177, 20);
-            this.textBox3.TabIndex = 21;
+            this.tb_cat_id.Location = new System.Drawing.Point(133, 93);
+            this.tb_cat_id.Name = "tb_cat_id";
+            this.tb_cat_id.Size = new System.Drawing.Size(177, 20);
+            this.tb_cat_id.TabIndex = 21;
             // 
-            // textBox2
+            // tb_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 55);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 20);
-            this.textBox2.TabIndex = 20;
+            this.tb_name.Location = new System.Drawing.Point(133, 55);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(177, 20);
+            this.tb_name.TabIndex = 20;
             // 
-            // textBox1
+            // tb_id
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 20);
-            this.textBox1.TabIndex = 19;
+            this.tb_id.Location = new System.Drawing.Point(133, 19);
+            this.tb_id.Name = "tb_id";
+            this.tb_id.Size = new System.Drawing.Size(177, 20);
+            this.tb_id.TabIndex = 19;
             // 
             // label5_count
             // 
@@ -113,52 +113,52 @@
             this.label2_name.TabIndex = 15;
             this.label2_name.Text = "name";
             // 
-            // tb_id
+            // label_id
             // 
-            this.tb_id.AutoSize = true;
-            this.tb_id.Location = new System.Drawing.Point(24, 26);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(15, 13);
-            this.tb_id.TabIndex = 14;
-            this.tb_id.Text = "id";
+            this.label_id.AutoSize = true;
+            this.label_id.Location = new System.Drawing.Point(24, 26);
+            this.label_id.Name = "label_id";
+            this.label_id.Size = new System.Drawing.Size(15, 13);
+            this.label_id.TabIndex = 14;
+            this.label_id.Text = "id";
             // 
-            // button2
+            // btn_OK
             // 
-            this.button2.Location = new System.Drawing.Point(14, 204);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Ok";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_OK.Location = new System.Drawing.Point(14, 204);
+            this.btn_OK.Name = "btn_OK";
+            this.btn_OK.Size = new System.Drawing.Size(75, 23);
+            this.btn_OK.TabIndex = 13;
+            this.btn_OK.Text = "Ok";
+            this.btn_OK.UseVisualStyleBackColor = true;
+            this.btn_OK.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btn_Cancel
             // 
-            this.button1.Location = new System.Drawing.Point(158, 204);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Cancel.Location = new System.Drawing.Point(158, 204);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancel.TabIndex = 12;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.button1_Click);
             // 
             // EditGoods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 265);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_count);
+            this.Controls.Add(this.tb_price);
+            this.Controls.Add(this.tb_cat_id);
+            this.Controls.Add(this.tb_name);
+            this.Controls.Add(this.tb_id);
             this.Controls.Add(this.label5_count);
             this.Controls.Add(this.label4_price);
             this.Controls.Add(this.label3_Cid);
             this.Controls.Add(this.label2_name);
-            this.Controls.Add(this.tb_id);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label_id);
+            this.Controls.Add(this.btn_OK);
+            this.Controls.Add(this.btn_Cancel);
             this.Name = "EditGoods";
             this.Text = "EditGoods";
             this.Load += new System.EventHandler(this.EditGoods_Load);
@@ -168,18 +168,17 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5_count;
         private System.Windows.Forms.Label label4_price;
         private System.Windows.Forms.Label label3_Cid;
         private System.Windows.Forms.Label label2_name;
-        private System.Windows.Forms.Label tb_id;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_id;
+        private System.Windows.Forms.Button btn_OK;
+        private System.Windows.Forms.Button btn_Cancel;
+        public System.Windows.Forms.TextBox tb_count;
+        public System.Windows.Forms.TextBox tb_price;
+        public System.Windows.Forms.TextBox tb_cat_id;
+        public System.Windows.Forms.TextBox tb_name;
+        public System.Windows.Forms.TextBox tb_id;
     }
 }

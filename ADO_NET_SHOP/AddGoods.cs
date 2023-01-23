@@ -13,9 +13,9 @@ namespace ADO_NET_SHOP
     public partial class AddGoods : Form
     {
         int _lastid;
-        public AddGoods()
+        public AddGoods(int lastid)
         {
-            InitializeComponent(int lastid);
+            InitializeComponent();
             _lastid = lastid;
         }
 

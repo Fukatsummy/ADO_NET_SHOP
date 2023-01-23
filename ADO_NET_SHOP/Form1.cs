@@ -18,6 +18,7 @@ namespace ADO_NET_SHOP
         SqlDataAdapter adapterGoods = null;
         SqlConnection connection = new SqlConnection();
         SqlCommandBuilder builder = null;
+        SqlCommandBuilder builder2 = null;
         SqlDataReader reader = null;
         DataSet dataSetGoods = new DataSet();
         DataSet dataSetCategory = new DataSet();
@@ -48,27 +49,46 @@ namespace ADO_NET_SHOP
                 ts_status.Text = "All data read success";
             }
         }
+
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage2)
+            try
             {
-                int lastid = 1;
-                if (dataSetCategory.Tables[0].Rows.Count > 0)
+                if (tabControl1.SelectedTab == tabPage2)
                 {
-                    lastid = (int)dataSetCategory.Tables[0].Rows[dataSetCategory.Tables[0].Rows.Count - 1][0] + 1;
+                    int lastid = 1;
+                    if (dataSetCategory.Tables[0].Rows.Count > 0)
+                    {
+                        lastid = (int)dataSetCategory.Tables[0].Rows[dataSetCategory.Tables[0].Rows.Count - 1][0] + 1;
+                    }
+                    AddCategory ac = new AddCategory(lastid);
+                    if (ac.ShowDialog() == DialogResult.OK)
+                    {
+                        dataSetCategory.Tables[0].Rows.Add(Int32.Parse(ac.tb_id.Text), ac.tb_name.Text);
+                    }
+                    ac.Dispose();
                 }
-                AddCategory ac = new AddCategory(lastid);
-                if (ac.ShowDialog() == DialogResult.OK)
+                else if (tabControl1.SelectedTab == tabPage1)
                 {
-                    dataSetCategory.Tables[0].Rows.Add(Int32.Parse(ac.tb_id.Text), ac.tb_name.Text);
+                    int lastid = 1;
+                    if (dataSetGoods.Tables[0].Rows.Count > 0)
+                    {
+                        lastid = (int)dataSetGoods.Tables[0].Rows[dataSetGoods.Tables[0].Rows.Count - 1][0] + 1;
+                    }
+                    AddGoods ag = new AddGoods(lastid);
+                    if (ag.ShowDialog() == DialogResult.OK)
+                    {
+                        dataSetGoods.Tables[0].Rows.Add(Int32.Parse(ag.tb_id.Text), ag.tb_name.Text, Int32.Parse(ag.tb_cat_id.Text), Int32.Parse(ag.tb_price.Text), Int32.Parse(ag.tb_count.Text));
+                    }
+                    ag.Dispose();
                 }
-                ac.Dispose();
             }
-            else if (tabControl1.SelectedTab == tabPage1)
+            catch (Exception ex)
             {
-
+                ts_status.Text = ex.Message;
             }
         }
+
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabPage2 && dataGridView1.SelectedRows.Count > 0)
@@ -77,30 +97,28 @@ namespace ADO_NET_SHOP
                 EditCategory ec = new EditCategory((int)editRow[0], (string)editRow[1]);
                 if (ec.ShowDialog() == DialogResult.OK)
                 {
-                    dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index].SetField(0,Int32.Parse(ec.tb_id.Text));
-                    dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index].SetField(1,ec.tb_name.Text);
+                    dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index].SetField(0, Int32.Parse(ec.tb_id.Text));
+                    dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index].SetField(1, ec.tb_name.Text);
                 }
             }
-            else if (tabControl1.SelectedTab == tabPage1)
+            else if (tabControl1.SelectedTab == tabPage1 && dataGridView1.SelectedRows.Count>0)
             {
-
+                DataRow editRow = dataSetGoods.Tables[0].Rows[dataGridView2.SelectedRows[0].Index];
+                EditGoods eg = new EditGoods((int)editRow[0], (string)editRow[1], (int)editRow[2], (int)editRow[3], (int)editRow[4]);
+                if (eg.ShowDialog() == DialogResult.OK)
+                {
+                    dataSetGoods.Tables[0].Rows[dataGridView2.SelectedRows[0].Index].SetField(0, Int32.Parse(eg.tb_id.Text));
+                    dataSetGoods.Tables[0].Rows[dataGridView2.SelectedRows[0].Index].SetField(1, eg.tb_name.Text);
+                    dataSetGoods.Tables[0].Rows[dataGridView2.SelectedRows[0].Index].SetField(2, Int32.Parse(eg.tb_cat_id.Text));
+                    dataSetGoods.Tables[0].Rows[dataGridView2.SelectedRows[0].Index].SetField(3, Int32.Parse(eg.tb_price.Text));
+                    dataSetGoods.Tables[0].Rows[dataGridView2.SelectedRows[0].Index].SetField(4, Int32.Parse(eg.tb_count.Text));
+                }
             }
         }
-        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedTab == tabPage2)
-            {
-               
-                if (tabControl1.SelectedTab == tabPage2)
-                {
-                    if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[0].Value !=null)
-                        dataSetCategory.Tables[0].Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
-                }
-            }
-            else if (tabControl1.SelectedTab == tabPage1)
-            {
 
-            }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -110,6 +128,30 @@ namespace ADO_NET_SHOP
             adapterCategory.InsertCommand = builder.GetInsertCommand();
             adapterCategory.UpdateCommand = builder.GetUpdateCommand();
             adapterCategory.Update(dataSetCategory); // сохраняет внесенные данные
+
+            builder2 = new SqlCommandBuilder(adapterGoods);
+            adapterGoods.DeleteCommand = builder2.GetDeleteCommand();
+            adapterGoods.InsertCommand = builder2.GetInsertCommand();
+            adapterGoods.UpdateCommand = builder2.GetUpdateCommand();
+            adapterGoods.Update(dataSetGoods); // сохраняет внесенные данные
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage2)
+            {
+
+                if (tabControl1.SelectedTab == tabPage2)
+                {
+                    if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[0].Value != null)
+                        dataSetCategory.Tables[0].Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
+                }
+            }
+            else if (tabControl1.SelectedTab == tabPage1)
+            {
+                if (dataGridView2.SelectedRows.Count > 0 && dataGridView2.SelectedRows[0].Cells[0].Value != null)
+                    dataSetCategory.Tables[0].Rows.RemoveAt(dataGridView2.SelectedRows[0].Index);
+            }
         }
     }
 }
